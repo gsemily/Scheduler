@@ -44,7 +44,7 @@ com.example.scheduler
 
 └── SchedulerApplication.java
 
-----
+---
 **API 설계**
 
 | 기능 | Method | URL | request  | response | 상태코드 |
@@ -55,7 +55,9 @@ com.example.scheduler
 | 일정 수정 | PUT   | 	/api/schedules/{id} | 요청 body  | 수정 정보 | 200: 정상수정 |
 | 일정 삭제 | DELETE   | 	/api/schedules/{id} | 요청 body  | - | 200: 정상삭제 |
 
+---
 **ERD**
+
 ![Image](https://github.com/user-attachments/assets/fe217100-6b4a-4e46-9957-31537b5c81a5)
 
 ## 📌주요기능
