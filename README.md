@@ -47,19 +47,13 @@ com.example.scheduler
 ---
 **API 설계**
 
-| 기능 | Method | URL | request  | response | 상태코드 |
-| --- | --- | --- |----------| --- | --- |
-| 일정 생성 | POST   | /api/schedules | 요청 body  | 등록 정보 | 200: 정상등록 |
-| 전체 일정 조회 | GET   | /api/schedules | -        | 다건 응답 정보 | 200: 정상조회 |
-| 선택 일정 조회 | GET  | 	/api/schedules/{id} | 요청 param | 단건 응답 정보 | 200: 정상조회 |
-| 일정 수정 | PUT   | 	/api/schedules/{id} | 요청 body  | 수정 정보 | 200: 정상수정 |
-| 일정 삭제 | DELETE   | 	/api/schedules/{id} | 요청 body  | - | 200: 정상삭제 |
+![Image](https://github.com/user-attachments/assets/ab354b07-193f-4985-8ee1-e79c3c956ae8)
 
----
 **ERD**
 
-![Image](https://github.com/user-attachments/assets/fe217100-6b4a-4e46-9957-31537b5c81a5)
+![Image](https://github.com/user-attachments/assets/c84baf82-e814-4e72-bfc6-03e1241fcc4e)
 
+---
 ## 📌주요기능
 **일정 작성하기**
 * 사용자가 입력한 todo, writer, password 값을 받아 새로운 일정 생성 
