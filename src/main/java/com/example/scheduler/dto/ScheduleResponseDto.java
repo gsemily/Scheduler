@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 
+//응답 DTO
 @Getter
 @Setter
 @AllArgsConstructor

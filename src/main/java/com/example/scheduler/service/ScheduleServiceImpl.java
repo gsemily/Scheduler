@@ -10,15 +10,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//Service 구현 클래스
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
     private final ScheduleRepository repository;
 
+    //ScheduleRepository 의존성 처리
     @Autowired
     public ScheduleServiceImpl(ScheduleRepository repository) {
         this.repository = repository;
     }
 
+    //일정 생성
     @Override
     public ScheduleResponseDto create(ScheduleRequestDto requestDto) {
         Schedule schedule = new Schedule();
@@ -31,6 +34,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return toDto(schedule);
     }
 
+    //전테 일정 조회
     @Override
     public List<ScheduleResponseDto> findAll() {
         return repository.findAll()
@@ -39,6 +43,7 @@ public class ScheduleServiceImpl implements ScheduleService {
                 .collect(Collectors.toList());
     }
 
+    //선택 일정 조회
     @Override
     public ScheduleResponseDto findById(Long id) {
         Schedule schedule = repository.findById(id)
@@ -46,6 +51,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return toDto(schedule);
     }
 
+    //일정 수정
     @Override
     public ScheduleResponseDto update(Long id, ScheduleRequestDto dto) {
         Schedule schedule = repository.findById(id)
@@ -60,6 +66,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return toDto(schedule);
     }
 
+    //일정 삭제
     @Override
     public void delete(Long id, String password) {
         String savedPassword = repository.findPasswordById(id)
@@ -70,6 +77,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         repository.delete(id);
     }
 
+    //Schedule Entity → DTO 변환
     private ScheduleResponseDto toDto(Schedule schedule) {
         return new ScheduleResponseDto(
                 schedule.getId(),

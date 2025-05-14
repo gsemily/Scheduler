@@ -3,6 +3,7 @@ import com.example.scheduler.entity.Schedule;
 import java.util.List;
 import java.util.Optional;
 
+//Repository 인터페이스
 public interface ScheduleRepository {
     Schedule save(Schedule schedule);
     List<Schedule> findAll();

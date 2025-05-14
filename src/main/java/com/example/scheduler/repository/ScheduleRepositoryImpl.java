@@ -9,15 +9,18 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+//Repository 구현 클래스
 @Repository
 public class ScheduleRepositoryImpl implements ScheduleRepository {
     private final JdbcTemplate jdbcTemplate;
 
+    //JdbcTemplate 의존성 처리
     @Autowired
     public ScheduleRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //일정 저장
     @Override
     public Schedule save(Schedule schedule) {
         String sql = "INSERT INTO schedule (todo, writer, password, created_date, modified_date) VALUES (?, ?, ?, ?, ?)";
@@ -30,12 +33,14 @@ public class ScheduleRepositoryImpl implements ScheduleRepository {
         return schedule;
     }
 
+    //전체 일정 반환
     @Override
     public List<Schedule> findAll() {
         String sql = "SELECT * FROM schedule ORDER BY modified_date DESC";
         return jdbcTemplate.query(sql, this::mapRow);
     }
 
+    //선택 일정 반환
     @Override
     public Optional<Schedule> findById(Long id) {
         String sql = "SELECT * FROM schedule WHERE id = ?";
@@ -43,6 +48,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepository {
         return result.stream().findFirst();
     }
 
+    //비밀번호 조회
     @Override
     public Optional<String> findPasswordById(Long id) {
         String sql = "SELECT password FROM schedule WHERE id = ?";
@@ -50,6 +56,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepository {
         return result.stream().findFirst();
     }
 
+    //일정 수정
     @Override
     public void update(Schedule schedule) {
         String sql = "UPDATE schedule SET todo = ?, writer = ?, modified_date = ? WHERE id = ?";
@@ -60,12 +67,14 @@ public class ScheduleRepositoryImpl implements ScheduleRepository {
                 schedule.getId());
     }
 
+    //일정 삭제
     @Override
     public void delete(Long id) {
         String sql = "DELETE FROM schedule WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
+    //ResultSet -> Schedule 객체 매핑
     private Schedule mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Schedule(
                 rs.getLong("id"),
