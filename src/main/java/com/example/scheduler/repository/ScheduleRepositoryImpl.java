@@ -11,8 +11,12 @@ import java.util.Optional;
 
 @Repository
 public class ScheduleRepositoryImpl implements ScheduleRepository {
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public ScheduleRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public Schedule save(Schedule schedule) {
