@@ -12,8 +12,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
+    private final ScheduleRepository repository;
+
     @Autowired
-    private ScheduleRepository repository;
+    public ScheduleServiceImpl(ScheduleRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public ScheduleResponseDto create(ScheduleRequestDto requestDto) {
