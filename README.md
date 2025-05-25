@@ -1,4 +1,4 @@
-# Java Project - Scheduler
+# Java Project - Scheduler(JDBC)
 
 ## 💻프로젝트 소개
 사용자의 일정을 관리하는 일정 관리 프로그램
